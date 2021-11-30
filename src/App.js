@@ -1,26 +1,25 @@
-import Contact from "./Components/Home/Contact/Contact";
-import Intro from "./Components/Home/Intro/Intro";
-import Portfolio from "./Components/Home/Portfolio/Portfolio";
-import Testimonials from "./Components/Home/Testimonials/Testimonials";
-import Topbar from "./Components/Home/Topbar/Topbar";
-import Works from "./Components/Home/Works/Works";
-import "./App.scss"
-import { useState } from "react";
-import Menu from "./Components/Home/Menu/Menu";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Homes from "./Components/Homes/Homes";
+import Project from "./Components/Projects/Project/Project";
+import "./App.css"
 
-function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
+function App() {  
   return (
-    <div className="app">
-      <Topbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-      <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-      <div className="section">
-        <Intro/>
-        <Portfolio/>
-        <Testimonials/>
-        <Works/>
-        <Contact/>
-      </div>
+    <div className="App">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Homes></Homes>
+          </Route>
+          <Route path="/intro">
+            <Homes></Homes>
+          </Route>
+          <Route path="/project">
+            <Project></Project>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Contact.scss"
 
 export default function Contact(){
-
     const [message, setMessage] = useState(false)
 
     const handleSubmit=(e)=>{

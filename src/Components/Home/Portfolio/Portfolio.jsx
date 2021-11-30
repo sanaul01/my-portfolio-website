@@ -6,6 +6,17 @@ export default function Portfolio(){
 
     const [selected, setSelected] = useState("featured")
 
+    const projsets = [
+        {
+            id: 1,
+            name: "Bike Lover",
+            liveLink: "",
+            gitLink: "",
+            img1: "",
+            description: "This site is created by ReactJS. It is a business or shopping site. It's a full-stack website. Users will see into this site bike and if they want to buy any bike firstly they will be looked in and then pressed order now button for order any bike",
+        },
+    ]
+
     const list = [
         {
             id: "featured",
