@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PortfolioList from "../PortfolioList/PortfolioList";
 import "./Portfolio.scss"
 
 export default function Portfolio(){
 
     const [selected, setSelected] = useState("featured")
+    const [projects, setProjects] = useState();
 
-    const projsets = [
-        {
-            id: 1,
-            name: "Bike Lover",
-            liveLink: "",
-            gitLink: "",
-            img1: "",
-            description: "This site is created by ReactJS. It is a business or shopping site. It's a full-stack website. Users will see into this site bike and if they want to buy any bike firstly they will be looked in and then pressed order now button for order any bike",
-        },
-    ]
 
     const list = [
         {
@@ -40,6 +32,12 @@ export default function Portfolio(){
         }
     ];
 
+    useEffect(()=>{
+        fetch("https://enigmatic-beyond-94168.herokuapp.com/projects")
+        .then(res=>res.json())
+        .then(data=> setProjects(data) )
+    }, [])
+
     return (
         <div className="portfolio" id="portfolio">
             <h2>Portfolio</h2>
@@ -54,30 +52,20 @@ export default function Portfolio(){
                 }
             </ul>
             <div className="container">
-                <div className="item">
-                    <img src="asset/developer.jpg" alt="" />
-                    <h3>Banking App</h3>
-                </div>
-                <div className="item">
-                    <img src="asset/developer.jpg" alt="" />
-                    <h3>Banking App</h3>
-                </div>
-                <div className="item">
-                    <img src="asset/developer.jpg" alt="" />
-                    <h3>Banking App</h3>
-                </div>
-                <div className="item">
-                    <img src="asset/developer.jpg" alt="" />
-                    <h3>Banking App</h3>
-                </div>
-                <div className="item">
-                    <img src="asset/developer.jpg" alt="" />
-                    <h3>Banking App</h3>
-                </div>
-                <div className="item">
-                    <img src="asset/developer.jpg" alt="" />
-                    <h3>Banking App</h3>
-                </div>
+                {
+                    projects?.map((project)=>(
+                        
+                    <div className="item"
+                    key={project.id}
+                    >
+                        <img src={project.img1} alt="" />
+                        <Link className="button" to={`/project/${project._id}`}>
+                            <button>{project.name}</button>
+                        </Link>
+                    
+                    </div>
+                    ))
+                }
             </div>
         </div>
     )

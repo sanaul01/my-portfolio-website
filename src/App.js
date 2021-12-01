@@ -14,7 +14,7 @@ function App() {
           <Route path="/intro">
             <Homes></Homes>
           </Route>
-          <Route path="/project">
+          <Route path="/project/:projectId">
             <Project></Project>
           </Route>
         </Switch>
