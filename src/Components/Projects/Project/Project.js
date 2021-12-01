@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import "./Project.css"
+import { Link } from "react-router-dom";
 
 const Project = () => {
     const {projectId} = useParams();
@@ -15,6 +16,10 @@ const Project = () => {
 
     return (
         <div>
+            <div>
+                <Link to="/intro">Home</Link>
+            </div>
+            
             <h2>Project: {projectId}</h2>
             <h2>name {project?.name}</h2>
             <div>
