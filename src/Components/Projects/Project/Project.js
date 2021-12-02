@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import "./Project.css"
+import "./Projects.scss"
 import { Link } from "react-router-dom";
 
 const Project = () => {
@@ -15,21 +15,32 @@ const Project = () => {
     }, [])
 
     return (
-        <div>
-            <div>
+        <div className="project">
+            <div className="container">
+            <div className="linkContainer">
                 <Link to="/intro">Home</Link>
             </div>
             
-            <h2>Project: {projectId}</h2>
-            <h2>name {project?.name}</h2>
-            <div>
-            <img src={project?.img1} alt="" />
+            
+            <div className="imageContainer">
+                <div>
+                <img src={project?.img1} alt="" />
+                </div>
+                <div>
+                <img src={project?.img2} alt="" />
+                </div>
+                <div>
+                <img src={project?.img3} alt="" />
+                </div>
             </div>
-            <div>
-            <img src={project?.img2} alt="" />
             </div>
-            <div>
-            <img src={project?.img3} alt="" />
+            <div className="detail">
+            <h2>Project Name: {project?.name}</h2>
+            <h4>Material: {project?.material}</h4>
+            <h4>LiveSite Link: {project?.liveLink}</h4>
+            <h4>GitClient: {project?.gitClient}</h4>
+            <h4>GitServer: {project?.gitServer}</h4>
+            <p>Description: {project?.description}</p>
             </div>
             
         </div>
